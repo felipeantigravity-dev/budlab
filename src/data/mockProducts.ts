@@ -1,6 +1,4 @@
 import { Product } from "@/hooks/useProducts";
 
-// Helper to generate UUIDs
-const generateId = (index: number) => `mock-product-${index + 1}`;
-
+// No more mock products - using real database products
 export const mockProducts: Product[] = [];
