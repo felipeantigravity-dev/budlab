@@ -4,7 +4,7 @@ import { ArrowLeft, Minus, Plus, ShoppingBag } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { useProduct } from "@/hooks/useProducts";
 import { useCart } from "@/contexts/CartContext";
-import { getProductImage } from "@/lib/productImages";
+import { ProductGallery } from "@/components/products/ProductGallery";
 
 const Produto = () => {
   const { id } = useParams<{ id: string }>();
@@ -71,14 +71,12 @@ const Produto = () => {
           </Link>
 
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Product Image */}
-            <div className="aspect-square overflow-hidden bg-secondary rounded-sm animate-fade-in">
-              <img
-                src={getProductImage(product.image_url)}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            {/* Product Gallery */}
+            <ProductGallery
+              mainImage={product.image_url}
+              secondaryImages={product.secondary_images}
+              productName={product.name}
+            />
 
             {/* Product Info */}
             <div className="animate-fade-in-up">
@@ -88,8 +86,11 @@ const Produto = () => {
               <h1 className="font-display text-4xl md:text-5xl mb-4">
                 {product.name}
               </h1>
-              <p className="text-3xl font-semibold text-primary mb-6">
+              <p className="text-3xl font-semibold text-primary">
                 {formatPrice(product.price)}
+              </p>
+              <p className="text-muted-foreground mb-6">
+                ou 3x de {formatPrice(product.price / 3)} sem juros
               </p>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 {product.description}

@@ -8,14 +8,14 @@ export interface Product {
   description: string | null;
   price: number;
   image_url: string | null;
+  secondary_images: string[] | null;
   category: string | null;
-  gender: 'male' | 'female' | 'unisex' | null;
   sizes: string[] | null;
   colors: string[] | null;
   stock: number | null;
   featured: boolean | null;
-  created_at: string;
-  updated_at: string;
+  created_at: string | null;
+  updated_at: string | null;
 }
 
 export function useProducts() {
