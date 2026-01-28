@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Twitter } from "lucide-react";
+import budlabLogo from "@/assets/budlab-tipografia-branca.png";
 
 export function Footer() {
   return (
@@ -9,9 +10,11 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="inline-block mb-4">
-              <span className="font-display text-3xl tracking-wider">
-                BUDLAB<span className="text-primary">.</span>
-              </span>
+              <img 
+                src={budlabLogo} 
+                alt="BUDLAB - dichavando arte pelas ruas" 
+                className="h-16 w-auto"
+              />
             </Link>
             <p className="text-background/70 max-w-md">
               Streetwear autêntico para quem vive a cultura urbana. 
