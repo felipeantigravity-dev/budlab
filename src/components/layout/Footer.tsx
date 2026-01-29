@@ -13,7 +13,7 @@ export function Footer() {
               <img 
                 src={budlabLogo} 
                 alt="BUDLAB - dichavando arte pelas ruas" 
-                className="h-24 w-auto"
+                className="h-32 w-auto"
               />
             </Link>
             <p className="text-background/70 max-w-md">
