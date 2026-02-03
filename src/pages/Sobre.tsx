@@ -15,7 +15,7 @@ const Sobre = () => {
                 SOBRE A BUDLAB
               </h1>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Nascemos da cultura urbana, crescemos com a comunidade e 
+                Nascemos da cultura urbana, crescemos com a comunidade e
                 construímos muito mais do que roupas — construímos identidade.
               </p>
             </div>
@@ -32,11 +32,11 @@ const Sobre = () => {
                   AUTENTICIDADE ACIMA DE TUDO
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  A BUDLAB wear surgiu em 2025 com uma missão clara: criar peças 
+                  A BUDLAB wear surgiu em 2025 com uma missão clara: criar peças
                   de streetwear que representem genuinamente a cultura urbana brasileira.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Cada peça é cuidadosamente desenvolvida com materiais premium, 
+                  Cada peça é cuidadosamente desenvolvida com materiais premium,
                   unindo conforto, durabilidade e um design que conta histórias.
                 </p>
               </div>
@@ -79,7 +79,7 @@ const Sobre = () => {
                 FAÇA PARTE DA <span className="text-primary">COMUNIDADE</span>
               </h2>
               <p className="text-background/70 mb-6 max-w-md mx-auto">
-                Siga-nos nas redes sociais e fique por dentro dos lançamentos 
+                Siga-nos nas redes sociais e fique por dentro dos lançamentos
                 e novidades exclusivas.
               </p>
               <div className="flex justify-center gap-4">
