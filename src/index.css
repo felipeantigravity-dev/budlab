@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BUDLAB Streetwear Design System */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Core Colors - White, Green, Black */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 5%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 5%;
+
+    /* Primary - Neon Green */
+    --primary: 142 76.2162% 36.2745%;
+    --primary-foreground: 0 0% 0%;
+
+    /* Secondary - Soft Gray */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Accent - Lime Green */
+    --accent: 85 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 120 100% 45%;
+
+    --radius: 0.25rem;
+
+    /* Custom tokens */
+    --gradient-brand: linear-gradient(135deg, hsl(120 100% 45%) 0%, hsl(85 100% 50%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 10%) 100%);
+    --shadow-glow: 0 0 30px hsl(120 100% 45% / 0.3);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.08);
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 85 100% 55%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 120 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer components {
+  /* Fade animations */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-down {
+    animation: fadeInDown 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+
+  /* Stagger delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300;
+  }
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  /* Brand gradient text */
+  .text-gradient {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effect */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Glass effect */
+  .glass {
+    backdrop-filter: blur(12px);
+    background: hsl(0 0% 100% / 0.8);
+    border: 1px solid hsl(0 0% 100% / 0.2);
+  }
+
+  /* Product card styling */
+  .product-card {
+    @apply bg-card rounded-sm overflow-hidden transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px hsl(0 0% 0% / 0.12);
+  }
+
+  /* Brand button */
+  .btn-brand {
+    @apply inline-flex items-center justify-center px-8 py-4 font-semibold uppercase tracking-wider;
+    @apply bg-primary text-primary-foreground;
+    @apply transition-all duration-300;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+  }
+  .btn-brand:hover {
+    box-shadow: var(--shadow-glow);
+    transform: scale(1.02);
+  }
+
+  /* Outline button */
+  .btn-outline-brand {
+    @apply inline-flex items-center justify-center px-8 py-4 font-semibold uppercase tracking-wider;
+    @apply border-2 border-foreground text-foreground bg-transparent;
+    @apply transition-all duration-300;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+  }
+  .btn-outline-brand:hover {
+    @apply bg-foreground text-background;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
