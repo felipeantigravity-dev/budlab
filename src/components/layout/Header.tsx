@@ -51,12 +51,13 @@ export function Header() {
           <div className="flex items-center gap-4">
             {user ? (
               <div className="hidden md:flex items-center gap-4">
-                <button
-                  onClick={handleSignOut}
-                  className="text-sm font-medium uppercase tracking-wider hover:text-primary transition-colors"
+                <Link
+                  to="/perfil"
+                  className="flex items-center gap-2 text-sm font-medium uppercase tracking-wider hover:text-primary transition-colors group"
                 >
-                  Sair
-                </button>
+                  <User size={18} className="group-hover:text-primary transition-colors" />
+                  <span>Minha Conta</span>
+                </Link>
               </div>
             ) : (
               <Link
@@ -126,15 +127,24 @@ export function Header() {
               Sobre
             </Link>
             {user ? (
-              <button
-                onClick={() => {
-                  handleSignOut();
-                  setIsMenuOpen(false);
-                }}
-                className="text-lg font-medium uppercase tracking-wider py-2 text-left"
-              >
-                Sair
-              </button>
+              <>
+                <Link
+                  to="/perfil"
+                  className="text-lg font-medium uppercase tracking-wider py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Minha Conta
+                </Link>
+                <button
+                  onClick={() => {
+                    handleSignOut();
+                    setIsMenuOpen(false);
+                  }}
+                  className="text-lg font-medium uppercase tracking-wider py-2 text-left text-red-500"
+                >
+                  Sair
+                </button>
+              </>
             ) : (
               <Link
                 to="/login"
