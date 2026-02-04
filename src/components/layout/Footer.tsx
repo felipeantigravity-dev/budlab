@@ -10,14 +10,14 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="inline-block mb-4">
-              <img 
-                src={budlabLogo} 
-                alt="BUDLAB - dichavando arte pelas ruas" 
+              <img
+                src={budlabLogo}
+                alt="BUDLAB - dichavando arte pelas ruas"
                 className="h-64 w-auto"
               />
             </Link>
             <p className="text-background/70 max-w-md">
-              Streetwear autêntico para quem vive a cultura urbana. 
+              Streetwear autêntico para quem vive a cultura urbana.
               Qualidade premium, estilo único.
             </p>
             <div className="flex gap-4 mt-6">
