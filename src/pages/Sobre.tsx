@@ -84,16 +84,16 @@ const Sobre = () => {
               </p>
               <div className="flex justify-center gap-4">
                 <a
-                  href="#"
+                  href="https://www.instagram.com/budlab.wear"
                   className="px-6 py-3 border border-background/30 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all font-medium"
                 >
                   Instagram
                 </a>
                 <a
-                  href="#"
+                  href="https://chat.whatsapp.com/JgEZJEnrDz6EcdJX89nCYK?mode=gi_t&fbclid=PAZnRzaAPvf-lleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaecgbcWE3pbbohKplF-vmxOdNRnltm-Sv4Nsph0UO41GXG-SdHC26CDvC5Low_aem_SJyIBTp_TLE2G5cQqxMr9w"
                   className="px-6 py-3 border border-background/30 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all font-medium"
                 >
-                  Twitter
+                  Whatsapp
                 </a>
               </div>
             </div>
