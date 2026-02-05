@@ -30,7 +30,7 @@ export function NewsletterModal() {
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-            <div className="relative w-full max-w-4xl bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row animate-scale-in">
+            <div className="relative w-full max-w-4xl bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row animate-scale-in max-h-[85vh] overflow-y-auto">
                 {/* Close Button */}
                 <button
                     onClick={() => setIsOpen(false)}
@@ -40,7 +40,7 @@ export function NewsletterModal() {
                 </button>
 
                 {/* Left Side - Image */}
-                <div className="w-full md:w-1/2 relative min-h-[300px] md:min-h-[500px]">
+                <div className="w-full md:w-1/2 relative min-h-[300px] md:min-h-[500px] hidden md:block">
                     <img
                         src={promoImage}
                         alt="Grupo VIP Streetwear"
@@ -56,7 +56,7 @@ export function NewsletterModal() {
                 </div>
 
                 {/* Right Side - Form */}
-                <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-white text-foreground">
+                <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-center bg-white text-foreground">
                     <div className="text-center mb-8">
                         <p className="text-sm font-semibold uppercase tracking-widest text-zinc-500 mb-2">
                             Entre em nosso Grupo VIP
