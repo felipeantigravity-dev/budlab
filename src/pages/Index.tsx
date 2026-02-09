@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/home/HeroSection";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
-import { BrandBanner } from "@/components/home/BrandBanner";
+import { ImageGallery } from "@/components/home/ImageGallery";
 import { AboutPreview } from "@/components/home/AboutPreview";
 
 const Index = () => {
@@ -9,7 +9,7 @@ const Index = () => {
     <Layout>
       <HeroSection />
       <FeaturedProducts />
-      <BrandBanner />
+      <ImageGallery />
       <AboutPreview />
     </Layout>
   );
