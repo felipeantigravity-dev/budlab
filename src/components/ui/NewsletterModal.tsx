@@ -23,8 +23,8 @@ export function NewsletterModal() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Simulate form submission
-        alert("Parabéns! Seu desconto foi ativado.");
+        // Redirect to WhatsApp community
+        window.location.href = "https://chat.whatsapp.com/JgEZJEnrDz6EcdJX89nCYK?mode=gi_t&fbclid=PAZnRzaAPvf-lleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaecgbcWE3pbbohKplF-vmxOdNRnltm-Sv4Nsph0UO41GXG-SdHC26CDvC5Low_aem_SJyIBTp_TLE2G5cQqxMr9w";
         setIsOpen(false);
     };
 
