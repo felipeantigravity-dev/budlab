@@ -7,8 +7,8 @@ const Index = () => {
   return (
     <Layout>
       <HeroSection />
-      <FeaturedProducts />
       <ImageGallery />
+      <FeaturedProducts />
     </Layout>
   );
 };
