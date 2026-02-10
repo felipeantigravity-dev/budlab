@@ -21,7 +21,7 @@ export function FeaturedProducts() {
   }
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-background snap-start">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>

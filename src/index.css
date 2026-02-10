@@ -86,6 +86,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
   }
 
   body {
@@ -93,13 +94,19 @@
     font-family: 'Inter', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 0.05em;
   }
 }
 
 @layer components {
+
   /* Fade animations */
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
@@ -126,16 +133,31 @@
   }
 
   /* Stagger delays */
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  .delay-400 { animation-delay: 400ms; }
-  .delay-500 { animation-delay: 500ms; }
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
 
   /* Hover effects */
   .hover-lift {
     @apply transition-all duration-300;
   }
+
   .hover-lift:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-glow);
@@ -144,6 +166,7 @@
   .hover-scale {
     @apply transition-transform duration-300;
   }
+
   .hover-scale:hover {
     transform: scale(1.02);
   }
@@ -173,6 +196,7 @@
     @apply bg-card rounded-sm overflow-hidden transition-all duration-300;
     box-shadow: var(--shadow-card);
   }
+
   .product-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 30px hsl(0 0% 0% / 0.12);
@@ -186,6 +210,7 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.1rem;
   }
+
   .btn-brand:hover {
     box-shadow: var(--shadow-glow);
     transform: scale(1.02);
@@ -199,16 +224,19 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.1rem;
   }
+
   .btn-outline-brand:hover {
     @apply bg-foreground text-background;
   }
 }
 
 @layer utilities {
+
   /* Hide scrollbar */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -220,6 +248,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -230,6 +259,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -241,6 +271,7 @@
     opacity: 0;
     transform: translateY(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -252,6 +283,7 @@
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -263,6 +295,7 @@
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -274,6 +307,7 @@
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
