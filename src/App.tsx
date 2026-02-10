@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { CartProvider } from "@/contexts/CartContext";
+import { CookieProvider } from "@/contexts/CookieContext";
+import CookieBanner from "@/components/ui/CookieBanner";
 import Index from "./pages/Index";
 import Produtos from "./pages/Produtos";
 import Produto from "./pages/Produto";
@@ -22,21 +24,24 @@ const App = () => (
     <AuthProvider>
       <CartProvider>
         <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/produtos" element={<Produtos />} />
-              <Route path="/produto/:id" element={<Produto />} />
-              <Route path="/carrinho" element={<Carrinho />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/wishlist" element={<Wishlist />} />
-              <Route path="/perfil" element={<Profile />} />
-              <Route path="/sobre" element={<Sobre />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+          <CookieProvider>
+            <Toaster />
+            <Sonner />
+            <CookieBanner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/produtos" element={<Produtos />} />
+                <Route path="/produto/:id" element={<Produto />} />
+                <Route path="/carrinho" element={<Carrinho />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/perfil" element={<Profile />} />
+                <Route path="/sobre" element={<Sobre />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </CookieProvider>
         </TooltipProvider>
       </CartProvider>
     </AuthProvider>
