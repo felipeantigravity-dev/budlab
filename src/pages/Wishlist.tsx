@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/products/ProductCard";
 import { useWishlist } from "@/hooks/useWishlist";
 import { useProduct } from "@/hooks/useProducts";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 // Component wrapper to fetch individual product data
 const WishlistProductItem = ({ productId }: { productId: string }) => {
@@ -21,6 +22,7 @@ const WishlistProductItem = ({ productId }: { productId: string }) => {
 };
 
 const Wishlist = () => {
+    usePageTitle("Wishlist | BudLab");
     const { user, loading: authLoading } = useAuth();
     const { wishlistItems, isLoading } = useWishlist();
 

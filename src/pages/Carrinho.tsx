@@ -4,8 +4,10 @@ import { Layout } from "@/components/layout/Layout";
 import { useCart } from "@/contexts/CartContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { getProductImage } from "@/lib/productImages";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const Carrinho = () => {
+  usePageTitle("Carrinho | BudLab");
   const { items, loading, updateQuantity, removeFromCart, totalPrice } = useCart();
   const { user } = useAuth();
 

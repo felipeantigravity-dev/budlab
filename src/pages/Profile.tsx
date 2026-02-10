@@ -4,8 +4,10 @@ import { Layout } from "@/components/layout/Layout";
 import { useAuth } from "@/contexts/AuthContext";
 import { ProfileForm } from "@/components/profile/ProfileForm";
 import { Package, User, LogOut } from "lucide-react";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 export default function Profile() {
+    usePageTitle("Perfil | BudLab");
     const { user, signOut, loading } = useAuth();
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState<"details" | "orders">("details");
@@ -43,8 +45,8 @@ export default function Profile() {
                             <button
                                 onClick={() => setActiveTab("details")}
                                 className={`w-full flex items-center gap-3 px-6 py-4 border-l-4 transition-all text-left font-bold uppercase tracking-wider ${activeTab === "details"
-                                        ? "border-primary bg-secondary/50 text-foreground"
-                                        : "border-transparent text-muted-foreground hover:bg-secondary/30 hover:text-foreground"
+                                    ? "border-primary bg-secondary/50 text-foreground"
+                                    : "border-transparent text-muted-foreground hover:bg-secondary/30 hover:text-foreground"
                                     }`}
                             >
                                 <User size={20} /> Dados Pessoais
@@ -53,8 +55,8 @@ export default function Profile() {
                             <button
                                 onClick={() => setActiveTab("orders")}
                                 className={`w-full flex items-center gap-3 px-6 py-4 border-l-4 transition-all text-left font-bold uppercase tracking-wider ${activeTab === "orders"
-                                        ? "border-primary bg-secondary/50 text-foreground"
-                                        : "border-transparent text-muted-foreground hover:bg-secondary/30 hover:text-foreground"
+                                    ? "border-primary bg-secondary/50 text-foreground"
+                                    : "border-transparent text-muted-foreground hover:bg-secondary/30 hover:text-foreground"
                                     }`}
                             >
                                 <Package size={20} /> Meus Pedidos

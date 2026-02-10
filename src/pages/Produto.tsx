@@ -6,10 +6,12 @@ import { useProduct } from "@/hooks/useProducts";
 import { useCart } from "@/contexts/CartContext";
 import { ProductGallery } from "@/components/products/ProductGallery";
 import { WishlistButton } from "@/components/products/WishlistButton";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const Produto = () => {
   const { id } = useParams<{ id: string }>();
   const { data: product, isLoading } = useProduct(id || "");
+  usePageTitle(product ? `${product.name} | BudLab` : "BudLab | Loja de Camisetas");
   const { addToCart } = useCart();
 
   const [selectedSize, setSelectedSize] = useState<string>("");

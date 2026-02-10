@@ -6,6 +6,7 @@ import { SearchBar } from "@/components/products/SearchBar";
 import { ProductFilters } from "@/components/products/ProductFilters";
 import { ProductSort } from "@/components/products/ProductSort";
 import { Filter } from "lucide-react";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 interface FiltersState {
   category: string[];
@@ -16,6 +17,7 @@ interface FiltersState {
 }
 
 const Produtos = () => {
+  usePageTitle("Produtos | BudLab");
   const { data: products, isLoading } = useProducts();
 
   // State

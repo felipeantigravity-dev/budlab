@@ -1,6 +1,8 @@
 import { Layout } from "@/components/layout/Layout";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const Sobre = () => {
+  usePageTitle("Sobre | BudLab");
   return (
     <Layout>
       <section className="py-20">
