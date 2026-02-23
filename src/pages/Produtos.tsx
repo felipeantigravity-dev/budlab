@@ -110,12 +110,6 @@ const Produtos = () => {
         <div className="container mx-auto px-4">
           {/* Header */}
           <div className="mb-8 md:mb-12">
-            <p className="text-primary font-medium uppercase tracking-widest mb-2">
-              Loja
-            </p>
-            <h1 className="font-display text-4xl md:text-6xl mb-6">
-              TODOS OS PRODUTOS
-            </h1>
 
             {/* Search and Sort Bar */}
             <div className="flex flex-col md:flex-row gap-4 justify-between md:items-center">
