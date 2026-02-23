@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { CartProvider } from "@/contexts/CartContext";
 import { CookieProvider } from "@/contexts/CookieContext";
+import { PageTransitionProvider } from "@/contexts/PageTransitionContext";
+import { PageTransition } from "@/components/ui/PageTransition";
 import CookieBanner from "@/components/ui/CookieBanner";
 import Index from "./pages/Index";
 import Produtos from "./pages/Produtos";
@@ -29,17 +31,20 @@ const App = () => (
             <Sonner />
             <CookieBanner />
             <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/produtos" element={<Produtos />} />
-                <Route path="/produto/:id" element={<Produto />} />
-                <Route path="/carrinho" element={<Carrinho />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/wishlist" element={<Wishlist />} />
-                <Route path="/perfil" element={<Profile />} />
-                <Route path="/sobre" element={<Sobre />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <PageTransitionProvider>
+                <PageTransition />
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/produtos" element={<Produtos />} />
+                  <Route path="/produto/:id" element={<Produto />} />
+                  <Route path="/carrinho" element={<Carrinho />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/wishlist" element={<Wishlist />} />
+                  <Route path="/perfil" element={<Profile />} />
+                  <Route path="/sobre" element={<Sobre />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </PageTransitionProvider>
             </BrowserRouter>
           </CookieProvider>
         </TooltipProvider>
