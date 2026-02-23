@@ -52,11 +52,11 @@ export function ImageGallery() {
 
     return (
         <section className="bg-background py-10 snap-start">
-            <div className="relative group px-4 md:px-12">
+            <div className="relative group">
                 <div className="overflow-hidden" ref={emblaRef}>
-                    <div className="flex touch-pan-y -ml-4">
+                    <div className="flex touch-pan-y">
                         {images.map((src, index) => (
-                            <div className="flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_33.333%] pl-4 min-w-0" key={index}>
+                            <div className="flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_33.333%] min-w-0" key={index}>
                                 <div className="relative aspect-[3/4] overflow-hidden">
                                     <img
                                         src={src}
