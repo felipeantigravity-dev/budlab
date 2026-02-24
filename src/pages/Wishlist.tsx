@@ -48,7 +48,7 @@ const Wishlist = () => {
                         <p className="text-muted-foreground mb-8">
                             Salve seus produtos favoritos para ver depois.
                         </p>
-                        <Link to="/login" className="btn-brand">
+                        <Link to="/login" className="btn-brand" style={{ backgroundColor: '#000', color: '#fff' }}>
                             Fazer Login
                         </Link>
                     </div>

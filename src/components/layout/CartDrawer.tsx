@@ -183,7 +183,7 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                             </div>
                             <div className="flex justify-between text-xs text-gray-400 mb-5">
                                 <span>Frete</span>
-                                <span className="text-green-600 font-medium">Grátis</span>
+                                <span className="text-primary font-medium">Grátis</span>
                             </div>
                             <button className="w-full bg-black text-white py-4 text-sm uppercase tracking-widest hover:bg-gray-900 transition-colors">
                                 Finalizar Compra
