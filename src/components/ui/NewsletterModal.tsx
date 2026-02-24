@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
-import promoImage from "@/assets/modal-promo.png";
+import promoImage from "@/../newsletter/bud.png";
 
 export function NewsletterModal() {
     const [isOpen, setIsOpen] = useState(false);
