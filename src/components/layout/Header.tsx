@@ -6,7 +6,11 @@ import { useCart } from "@/contexts/CartContext";
 import { usePageTransition } from "@/contexts/PageTransitionContext";
 import logo from "@/assets/budlab-logo.png";
 
-export function Header() {
+interface HeaderProps {
+  onOpenCart: () => void;
+}
+
+export function Header({ onOpenCart }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, signOut } = useAuth();
   const { totalItems } = useCart();
@@ -92,7 +96,7 @@ export function Header() {
 
             {/* Carrinho */}
             <button
-              onClick={() => handleNav("/carrinho")}
+              onClick={onOpenCart}
               className="relative flex items-center gap-2 text-sm font-medium uppercase tracking-wider hover:text-primary transition-colors bg-transparent border-none cursor-pointer"
             >
               <ShoppingBag size={20} />
