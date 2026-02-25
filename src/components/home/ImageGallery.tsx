@@ -4,25 +4,25 @@ import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const images = [
-    "/images/gallery/IMG_0562.JPG",
-    "/images/gallery/IMG_0563.JPG",
-    "/images/gallery/IMG_0578.JPG",
-    "/images/gallery/IMG_0623.JPG",
-    "/images/gallery/IMG_0628.JPG",
-    "/images/gallery/IMG_0634.JPG",
-    "/images/gallery/IMG_0643.JPG",
-    "/images/gallery/IMG_0647.JPG",
-    "/images/gallery/IMG_0656.JPG",
-    "/images/gallery/IMG_0657.JPG",
-    "/images/gallery/IMG_0710.JPG",
-    "/images/gallery/IMG_0728.JPG",
-    "/images/gallery/IMG_0731.JPG",
-    "/images/gallery/IMG_0755.JPG",
-    "/images/gallery/IMG_0759.JPG",
-    "/images/gallery/IMG_0760.JPG",
-    "/images/gallery/IMG_0845.JPG",
-    "/images/gallery/IMG_0849.JPG",
-    "/images/gallery/IMG_0850.JPG",
+    { webp: "/images/gallery/webp/IMG_0562.webp", fallback: "/images/gallery/IMG_0562.JPG" },
+    { webp: "/images/gallery/webp/IMG_0563.webp", fallback: "/images/gallery/IMG_0563.JPG" },
+    { webp: "/images/gallery/webp/IMG_0578.webp", fallback: "/images/gallery/IMG_0578.JPG" },
+    { webp: "/images/gallery/webp/IMG_0623.webp", fallback: "/images/gallery/IMG_0623.JPG" },
+    { webp: "/images/gallery/webp/IMG_0628.webp", fallback: "/images/gallery/IMG_0628.JPG" },
+    { webp: "/images/gallery/webp/IMG_0634.webp", fallback: "/images/gallery/IMG_0634.JPG" },
+    { webp: "/images/gallery/webp/IMG_0643.webp", fallback: "/images/gallery/IMG_0643.JPG" },
+    { webp: "/images/gallery/webp/IMG_0647.webp", fallback: "/images/gallery/IMG_0647.JPG" },
+    { webp: "/images/gallery/webp/IMG_0656.webp", fallback: "/images/gallery/IMG_0656.JPG" },
+    { webp: "/images/gallery/webp/IMG_0657.webp", fallback: "/images/gallery/IMG_0657.JPG" },
+    { webp: "/images/gallery/webp/IMG_0710.webp", fallback: "/images/gallery/IMG_0710.JPG" },
+    { webp: "/images/gallery/webp/IMG_0728.webp", fallback: "/images/gallery/IMG_0728.JPG" },
+    { webp: "/images/gallery/webp/IMG_0731.webp", fallback: "/images/gallery/IMG_0731.JPG" },
+    { webp: "/images/gallery/webp/IMG_0755.webp", fallback: "/images/gallery/IMG_0755.JPG" },
+    { webp: "/images/gallery/webp/IMG_0759.webp", fallback: "/images/gallery/IMG_0759.JPG" },
+    { webp: "/images/gallery/webp/IMG_0760.webp", fallback: "/images/gallery/IMG_0760.JPG" },
+    { webp: "/images/gallery/webp/IMG_0845.webp", fallback: "/images/gallery/IMG_0845.JPG" },
+    { webp: "/images/gallery/webp/IMG_0849.webp", fallback: "/images/gallery/IMG_0849.JPG" },
+    { webp: "/images/gallery/webp/IMG_0850.webp", fallback: "/images/gallery/IMG_0850.JPG" },
 ];
 
 export function ImageGallery() {
@@ -55,14 +55,19 @@ export function ImageGallery() {
             <div className="relative group">
                 <div className="overflow-hidden" ref={emblaRef}>
                     <div className="flex touch-pan-y">
-                        {images.map((src, index) => (
+                        {images.map((img, index) => (
                             <div className="flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_33.333%] min-w-0" key={index}>
                                 <div className="relative aspect-[3/4] overflow-hidden">
-                                    <img
-                                        src={src}
-                                        alt={`Gallery image ${index + 1}`}
-                                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                                    />
+                                    <picture>
+                                        <source srcSet={img.webp} type="image/webp" />
+                                        <img
+                                            src={img.fallback}
+                                            alt={`Gallery image ${index + 1}`}
+                                            loading={index < 3 ? "eager" : "lazy"}
+                                            decoding="async"
+                                            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                                        />
+                                    </picture>
                                 </div>
                             </div>
                         ))}
