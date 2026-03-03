@@ -18,7 +18,6 @@ const Produto = () => {
   const [selectedSize, setSelectedSize] = useState<string>("");
   const [selectedColor, setSelectedColor] = useState<string>("");
   const [quantity, setQuantity] = useState(1);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("pt-BR", {
@@ -74,7 +73,6 @@ const Produto = () => {
   }
 
   const allImages = [product.image_url, ...(product.secondary_images || [])].filter(Boolean) as string[];
-  const currentImage = selectedImage || product.image_url;
 
   return (
     <Layout>
@@ -91,10 +89,10 @@ const Produto = () => {
         </div>
 
         {/* Three-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-[30%_44%_26%] min-h-[85vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-[30%_44%_26%]">
 
           {/* ── LEFT COLUMN: Brand / Name / Description / Attributes ── */}
-          <div className="flex flex-col justify-start px-10 pt-20 pb-12 lg:border-r border-gray-100">
+          <div className="hidden lg:flex flex-col justify-start px-10 pt-20 pb-12 lg:border-r border-gray-100 sticky top-0 h-screen overflow-y-auto">
             {/* Brand */}
             <p className="text-[11px] font-bold uppercase tracking-widest text-black mb-1">
               BUDLAB
@@ -138,42 +136,29 @@ const Produto = () => {
             </ul>
           </div>
 
-          {/* ── CENTER COLUMN: Product image ── */}
-          <div className="flex flex-col items-center justify-center bg-white lg:border-r border-gray-100 py-12 px-6">
-            {/* Main image */}
-            <div className="w-full max-w-lg aspect-[3/4] overflow-hidden">
-              <img
-                src={getProductImage(currentImage)}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
+          {/* ── CENTER COLUMN: Product images stacked ── */}
+          <div className="bg-white lg:border-r border-gray-100">
+            {/* Mobile: info above images */}
+            <div className="lg:hidden px-8 pt-8 pb-6 border-b border-gray-100">
+              <p className="text-[11px] font-bold uppercase tracking-widest text-black mb-1">BUDLAB</p>
+              <h1 className="text-[13px] font-normal text-[#333] mb-4 leading-snug" style={{ fontFamily: "'Inter', sans-serif" }}>{product.name}</h1>
+              <p className="text-[16px] font-normal text-black tracking-tight">{formatPrice(product.price)}</p>
             </div>
 
-            {/* Thumbnails */}
-            {allImages.length > 1 && (
-              <div className="flex gap-2 mt-5">
-                {allImages.map((img, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSelectedImage(img)}
-                    className={`w-14 h-14 overflow-hidden border transition-all ${(selectedImage || product.image_url) === img
-                        ? "border-black"
-                        : "border-transparent hover:border-gray-300"
-                      }`}
-                  >
-                    <img
-                      src={getProductImage(img)}
-                      alt={`${product.name} - ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
-                ))}
+            {/* Stacked images */}
+            {allImages.map((img, index) => (
+              <div key={index} className="w-full aspect-[3/4]">
+                <img
+                  src={getProductImage(img)}
+                  alt={`${product.name} - ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
               </div>
-            )}
+            ))}
           </div>
 
           {/* ── RIGHT COLUMN: Price / Size / Actions ── */}
-          <div className="flex flex-col justify-start px-10 pt-20 pb-12">
+          <div className="hidden lg:flex flex-col justify-start px-10 pt-20 pb-12 sticky top-0 h-screen overflow-y-auto">
             {/* Price */}
             <div className="mb-8">
               <p className="text-[16px] font-normal text-black tracking-tight">
