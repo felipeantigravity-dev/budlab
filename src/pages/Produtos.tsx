@@ -106,12 +106,11 @@ const Produtos = () => {
 
   return (
     <Layout>
-      <section className="py-8 md:py-12">
-        <div className="container mx-auto px-4">
-          {/* Header */}
-          <div className="mb-8 md:mb-12">
+      <section className="produtos-page py-8 md:py-12 lg:bg-[#F5F5F5]">
+        <div className="container mx-auto px-4 lg:px-0">
 
-            {/* Search and Sort Bar */}
+          {/* Search/Sort Bar — visível apenas abaixo de lg */}
+          <div className="mb-8 md:mb-12 lg:hidden">
             <div className="flex flex-col md:flex-row gap-4 justify-between md:items-center">
               <SearchBar
                 value={searchQuery}
@@ -130,9 +129,28 @@ const Produtos = () => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-8 lg:gap-12 relative">
-            {/* Sidebar Filters - Desktop */}
-            <aside className="hidden md:block w-64 flex-shrink-0">
+          {/* Barra de filtros — apenas desktop (lg+) */}
+          <div className="hidden lg:flex items-center justify-center gap-2 mb-8">
+            <button
+              className="desktop-filter-btn"
+              onClick={() => setShowMobileFilters(true)}
+            >
+              <Filter size={14} /> FILTROS
+            </button>
+            <button
+              className="desktop-filter-btn"
+              onClick={() => {
+                const next = sortOption === "price-asc" ? "price-desc" : "price-asc";
+                setSortOption(next);
+              }}
+            >
+              ↕ ORDENAR
+            </button>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-8 lg:gap-0 relative">
+            {/* Sidebar Filters — tablet only (md, oculto no lg) */}
+            <aside className="hidden md:block lg:hidden w-64 flex-shrink-0">
               <div className="sticky top-24">
                 <ProductFilters filters={filters} setFilters={setFilters} />
               </div>
@@ -140,7 +158,7 @@ const Produtos = () => {
 
             {/* Mobile Filters Drawer */}
             {showMobileFilters && (
-              <div className="md:hidden fixed inset-0 z-50 bg-background/80 backdrop-blur-sm">
+              <div className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm">
                 <div className="absolute right-0 top-0 bottom-0 w-80 bg-background border-l border-border p-6 overflow-y-auto shadow-xl animate-slide-in-right">
                   <div className="flex justify-between items-center mb-8">
                     <h2 className="font-display text-2xl">FILTROS</h2>
@@ -165,8 +183,8 @@ const Produtos = () => {
             {/* Products Grid */}
             <div className="flex-1">
               {isLoading ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-[14px]">
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
                     <div
                       key={i}
                       className="aspect-square bg-secondary animate-pulse rounded-none"
@@ -175,10 +193,10 @@ const Produtos = () => {
                 </div>
               ) : (
                 <>
-                  <p className="mb-6 text-muted-foreground">
+                  <p className="mb-6 text-muted-foreground lg:hidden">
                     Mostrando {filteredProducts.length} produtos
                   </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-[14px]">
                     {filteredProducts.map((product, index) => (
                       <ProductCard key={product.id} product={product} index={index} />
                     ))}

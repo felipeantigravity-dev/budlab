@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Product } from "@/hooks/useProducts";
 import { getProductImage } from "@/lib/productImages";
@@ -9,6 +10,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
+  const [hovered, setHovered] = useState(false);
+
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -16,18 +19,47 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
     }).format(price);
   };
 
+  const installmentValue = product.price / 6;
+
+  const mainImage = getProductImage(product.image_url);
+  const secondImage =
+    product.secondary_images && product.secondary_images.length > 0
+      ? getProductImage(product.secondary_images[0])
+      : null;
+
+  const showSecond = hovered && !!secondImage;
+
   return (
     <div
       className="product-card group animate-fade-in-up relative"
       style={{ animationDelay: `${index * 100}ms` }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       <Link to={`/produto/${product.id}`} className="block">
-        <div className="aspect-square overflow-hidden bg-secondary relative">
+        <div className="product-card-img-wrap aspect-square overflow-hidden bg-secondary relative">
+          {/* Imagem principal */}
           <img
-            src={getProductImage(product.image_url)}
+            src={mainImage}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-full object-cover lg:object-contain"
+            style={{
+              opacity: showSecond ? 0 : 1,
+              transition: "opacity 0.5s ease-in-out",
+            }}
           />
+          {/* Imagem secundária — só renderiza se existir */}
+          {secondImage && (
+            <img
+              src={secondImage}
+              alt={`${product.name} — visão alternativa`}
+              className="absolute inset-0 w-full h-full object-cover lg:object-contain"
+              style={{
+                opacity: showSecond ? 1 : 0,
+                transition: "opacity 0.5s ease-in-out",
+              }}
+            />
+          )}
         </div>
       </Link>
 
@@ -39,13 +71,24 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         />
       </div>
 
-      <Link to={`/produto/${product.id}`} className="block p-4">
-        <h3 className="font-display text-lg tracking-wide truncate">
-          {product.name}
-        </h3>
-        <p className="text-primary font-semibold mt-1">
-          {formatPrice(product.price)}
-        </p>
+      <Link to={`/produto/${product.id}`} className="block">
+        {/* Info area — desktop: flex row (name left, price right) */}
+        <div className="product-card-info p-4 lg:p-0">
+          <h3 className="product-card-name font-display text-lg tracking-wide">
+            {product.name}
+          </h3>
+          <div className="product-card-price">
+            <span className="product-card-price-main text-primary font-semibold mt-1 block">
+              {formatPrice(product.price)}
+            </span>
+            <span className="product-card-installment hidden lg:block">
+              6x de {formatPrice(installmentValue)}
+            </span>
+            <span className="product-card-sem-juros hidden lg:block">
+              sem juros
+            </span>
+          </div>
+        </div>
       </Link>
     </div>
   );

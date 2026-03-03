@@ -316,13 +316,23 @@
 
 /* Page Transition Overlay */
 @keyframes transitionFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes transitionFadeOut {
-  from { opacity: 1; }
-  to   { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 .page-transition-overlay {
@@ -348,4 +358,120 @@
   width: 220px;
   max-width: 60vw;
   object-fit: contain;
+}
+
+/* ============================================================
+   DESKTOP PRODUCT GRID — apenas @media (min-width: 1024px)
+   Escopo: somente dentro de .produtos-page (página /produtos).
+   Home e demais páginas NÃO são afetadas.
+   ============================================================ */
+@media (min-width: 1024px) {
+
+  /* Card: flat, sem sombra, sem borda, sem border-radius */
+  .produtos-page .product-card {
+    background: #F0F0F0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    overflow: hidden;
+  }
+
+  /* Remove efeito hover no desktop */
+  .produtos-page .product-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Container da imagem */
+  .produtos-page .product-card-img-wrap {
+    width: 100%;
+    aspect-ratio: unset;
+    height: 75%;
+    min-height: 200px;
+    background: #EBEBEB;
+    overflow: hidden;
+  }
+
+  /* Imagem: object-fit contain, sem border-radius, sem hover scale */
+  .produtos-page .product-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    border-radius: 0;
+    transform: none !important;
+  }
+
+  /* Área de informações: flex row — nome esquerda, preço direita */
+  .produtos-page .product-card-info {
+    padding: 12px 0 16px 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #F0F0F0;
+    gap: 8px;
+  }
+
+  /* Nome do produto */
+  .produtos-page .product-card-name {
+    font-family: Inter, 'Helvetica Neue', Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #111111 !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Bloco de preço (lado direito) */
+  .produtos-page .product-card-price {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .produtos-page .product-card-price-main {
+    display: block !important;
+    font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #111111 !important;
+    margin-top: 0 !important;
+  }
+
+  .produtos-page .product-card-installment,
+  .produtos-page .product-card-sem-juros {
+    display: block !important;
+    font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    color: #555555 !important;
+  }
+
+  /* Barra de filtros desktop */
+  .desktop-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #111111;
+    border-radius: 0;
+    background: transparent;
+    font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .desktop-filter-btn:hover {
+    background: #111111;
+    color: #ffffff;
+  }
 }
