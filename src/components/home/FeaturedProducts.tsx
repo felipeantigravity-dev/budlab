@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useFeaturedProducts } from "@/hooks/useProducts";
 import { ProductCard } from "@/components/products/ProductCard";
 
+
 export function FeaturedProducts() {
   const { data: products, isLoading } = useFeaturedProducts();
 
@@ -21,24 +22,12 @@ export function FeaturedProducts() {
   }
 
   return (
-    <section className="py-20 bg-background snap-start">
+    <section className="pb-20 pt-4 bg-background snap-start">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-          <div>
-            <p className="text-primary font-medium uppercase tracking-widest mb-2">
-              Destaques
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl">
-              PRODUTOS EM ALTA
-            </h2>
-          </div>
-          <Link
-            to="/produtos"
-            className="flex items-center gap-2 text-sm font-medium uppercase tracking-wider mt-4 md:mt-0 hover:text-primary transition-colors group"
-          >
-            Ver Todos
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+        <div className="flex flex-col items-center justify-center mb-12 text-center">
+          <h2 className="font-display text-lg md:text-xl uppercase tracking-widest">
+            DESTAQUES
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

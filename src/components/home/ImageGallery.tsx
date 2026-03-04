@@ -51,7 +51,7 @@ export function ImageGallery() {
     }, [emblaApi, onSelect]);
 
     return (
-        <section className="bg-background py-10 snap-start">
+        <section className="bg-background pt-10 pb-0 snap-start">
             <div className="relative group">
                 <div className="overflow-hidden" ref={emblaRef}>
                     <div className="flex touch-pan-y">
