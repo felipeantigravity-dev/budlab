@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Menu, X, ShoppingBag, User, Heart } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useCart } from "@/contexts/CartContext";
@@ -66,14 +66,13 @@ export function Header({ onOpenCart }: HeaderProps) {
           <div className="flex items-center gap-4">
             {user ? (
               <div className="hidden md:flex items-center gap-4">
-                {/* /perfil não é rota principal — Link normal */}
-                <Link
-                  to="/perfil"
-                  className="flex items-center gap-2 text-sm font-medium uppercase tracking-wider hover:text-primary transition-colors group"
+                <button
+                  onClick={() => handleNav("/perfil")}
+                  className="flex items-center gap-2 text-sm font-medium uppercase tracking-wider hover:text-primary transition-colors group bg-transparent border-none cursor-pointer"
                 >
                   <User size={18} className="group-hover:text-primary transition-colors" />
                   <span>Minha Conta</span>
-                </Link>
+                </button>
               </div>
             ) : (
               <button
@@ -142,13 +141,12 @@ export function Header({ onOpenCart }: HeaderProps) {
             </button>
             {user ? (
               <>
-                <Link
-                  to="/perfil"
-                  className="text-lg font-medium uppercase tracking-wider py-2"
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  onClick={() => handleNav("/perfil")}
+                  className="text-lg font-medium uppercase tracking-wider py-2 text-left bg-transparent border-none cursor-pointer"
                 >
                   Minha Conta
-                </Link>
+                </button>
                 <button
                   onClick={() => {
                     handleSignOut();

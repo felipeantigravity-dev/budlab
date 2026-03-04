@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useCallback, ReactNode } from "rea
 import { useNavigate } from "react-router-dom";
 
 // Rotas que disparam a transição
-const TRANSITION_ROUTES = ["/", "/produtos", "/sobre", "/login", "/wishlist", "/carrinho"];
+const TRANSITION_ROUTES = ["/", "/produtos", "/sobre", "/login", "/wishlist", "/carrinho", "/perfil"];
 
 type TransitionPhase = "idle" | "entering" | "visible" | "exiting";
 

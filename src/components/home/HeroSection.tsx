@@ -1,8 +1,10 @@
 import heroBanner from "@/assets/hero-banner-v2.jpg";
 import heroBannerMobile from "@/assets/hero-banner-mobile.png";
-import { Link } from "react-router-dom";
+import { usePageTransition } from "@/contexts/PageTransitionContext";
 
 export function HeroSection() {
+  const { startTransition } = usePageTransition();
+
   return (
     <section className="relative md:min-h-screen flex items-center justify-center overflow-hidden snap-start">
       {/* Background Image */}
@@ -17,12 +19,12 @@ export function HeroSection() {
         </picture>
         {/* Button Overlay */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <Link
-            to="/produtos"
-            className="mt-60 md:mt-80 px-8 py-3 border border-white bg-transparent text-white font-bold text-sm uppercase tracking-widest hover:border-black hover:text-black transition-colors duration-300 rounded-none"
+          <button
+            onClick={() => startTransition("/produtos")}
+            className="mt-60 md:mt-80 px-8 py-3 border border-white bg-transparent text-white font-bold text-sm uppercase tracking-widest hover:border-black hover:text-black transition-colors duration-300 rounded-none cursor-pointer"
           >
             COMPRE AGORA
-          </Link>
+          </button>
         </div>
       </div>
 
